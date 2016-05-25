@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SimpleMvvmSamples.XamarinForms.Views.CustomerView">
+
+  <StackLayout VerticalOptions="Start"
+               BindingContext="{Binding Source={StaticResource Locator}, Path=MainPageViewModel}">
+
+    <Label Text="{Binding BannerText}"
+           HorizontalTextAlignment="Center"/>
+
+    <Grid BindingContext="{Binding Source={StaticResource Locator}, Path=CustomerViewModel}"
+          Margin="20">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition/>
+        <ColumnDefinition/>
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition/>
+        <RowDefinition/>
+        <RowDefinition/>
+        <RowDefinition/>
+      </Grid.RowDefinitions>
+      <Label Text="Customer Id:" Grid.Row="0"/>
+      <Entry Grid.Row="0" Grid.Column="1" 
+             Text="{Binding Model.CustomerId}"/>
+      <Label Text="Customer Name:" Grid.Row="1" Grid.Column="0" />
+      <Entry Grid.Row="1" Grid.Column="1" 
+             Text="{Binding Path=Model.CustomerName}" />
+      <Label Text="Customer City:" Grid.Row="2" Grid.Column="0" />
+      <Entry Grid.Row="2" Grid.Column="1" 
+             Text="{Binding Path=Model.City}" />
+      <Button Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0"
+              Text="New Customer"
+              Command="{Binding NewCustomerCommand}"/>
+    </Grid>
+  </StackLayout>
+</ContentPage>
